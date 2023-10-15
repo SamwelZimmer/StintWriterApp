@@ -10,8 +10,6 @@ type CustomContext = {
     searchParams: {
       auth: string;
     };
-    req: any;  // Add this for the request object
-    res: any;  // Add this for the response object
 };
 
 export default async function AuthPage(context: CustomContext) {

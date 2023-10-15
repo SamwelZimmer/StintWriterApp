@@ -90,7 +90,7 @@ const StintCard = ({ stint }: StintCardProps) => {
 
 const tabs = ["active", "upcoming", "past"];
 
-const icons = [<PiClockCountdownBold />, <PiClockClockwiseBold />, <PiClockCounterClockwiseBold />];
+const icons = [<PiClockCountdownBold key="countdown" />, <PiClockClockwiseBold key="clockwise" />, <PiClockCounterClockwiseBold key="anticlockwise" />];
 
 interface TabsProps {
     categorizedStints: CategorisedStints;
@@ -135,11 +135,11 @@ const Tabs = ({ categorizedStints }: TabsProps) => {
             >
                 { stintCategories[selectedTab].length > 0 ? 
                     <>
-                        {
-                            stintCategories[selectedTab].map((stint, i) => (
-                                <StintCard key={i} stint={stint} />
-                            ))
-                        }
+                      {
+                          stintCategories[selectedTab].map((stint) => (
+                              <StintCard key={stint.id} stint={stint} />
+                          ))
+                      }
                     </>
                     :
                     <>
