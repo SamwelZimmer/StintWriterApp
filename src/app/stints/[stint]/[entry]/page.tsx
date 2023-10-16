@@ -54,11 +54,16 @@ export default function EntryPage(context: ContextType) {
     // the current entry
     const entry = stint?.entries[day - 1];
 
+    // getting the day's entry
     useEffect(() => {
-        if (entry) {
-            setEntryData(entry);
+        const fetchData = async () => {
+            const data = await getEntry(userId, stintId, day);
+            console.log(data);
+            setEntryData(data);
         };
-    }, []);
+
+        fetchData();
+    }, [userId, stintId]);
 
     // number of days in the stint
     const noOfDays = stint?.numberOfDays || 1;
