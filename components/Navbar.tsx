@@ -6,8 +6,10 @@ import { useRouter } from "next/navigation";
 import { RiMenu4Line, RiMenu5Line, RiDashboardLine, RiAddLine, RiCalendar2Line, RiSunFill, RiMoonFill, RiDoorOpenLine } from "react-icons/ri";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import Link from "next/link";
+import { Toaster } from 'react-hot-toast';
 
 import { signOutUser } from "../lib/firebase";
+import { successToast, errorToast } from "../lib/toasties";
 import { removeFromLocalStorage, getFromLocalStorage } from "../lib/helpers";
 
 export default function Navbar({ showBackButton=true }) {
@@ -28,11 +30,11 @@ export default function Navbar({ showBackButton=true }) {
                 removeFromLocalStorage("userStints");
             };
             
-            router.push("/auth")
-            // hot toast
+            router.push("/auth");
+            successToast("see ya later x");
         } catch (err) {
             console.log(err);
-            // hot toast
+            errorToast("somin' went wrong");
         }
     }
 
@@ -75,6 +77,8 @@ export default function Navbar({ showBackButton=true }) {
                 </div>
                 
             </motion.div>
+
+            <Toaster />
         </>
     );
 };

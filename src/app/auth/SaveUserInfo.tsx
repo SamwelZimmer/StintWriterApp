@@ -3,7 +3,10 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useRecoilState } from "recoil";
+import { Toaster } from "react-hot-toast";
 
+import { DefaultSpinner } from "../../../components/Loaders";
+import { successToast, errorToast } from "../../../lib/toasties";
 import { addToLocalStorage, getFromLocalStorage, updateLocalStorage } from "../../../lib/helpers";
 import { userIdAtom } from "../../../atoms/userIdAtom";
 
@@ -26,9 +29,10 @@ export const SaveUserInfo = ({ data }: SaveUserInfoProps) => {
         } else {
             addToLocalStorage("userStints", JSON.stringify(data["userStints"]));
         }
-
+        successToast("ahhh. You again, huh.");
         router.push("/")
     } else {
+        errorToast("nuh uh, mister");
         console.log("no data");
         router.push("http://localhost:3000/")
     }
@@ -36,11 +40,15 @@ export const SaveUserInfo = ({ data }: SaveUserInfoProps) => {
     return (
         <>  
             {
-                <main className="w-screen h-screen flex flex-col items-center justify-center">
+                <main className="w-screen h-screen flex flex-col gap-8 items-center justify-center">
                     <span>Just checking you out {";)"}</span>
+
+                    <div className="flex items-center justify-center w-28 h-28">
+                        <DefaultSpinner />
+                    </div>
                 </main>
             }
-
+            <Toaster />
         </>
     )
 };

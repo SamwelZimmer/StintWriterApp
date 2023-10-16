@@ -4,6 +4,8 @@ import { decryptData } from "../../../lib/helpers";
 import { getUserFromId, getUserStints } from "../../../lib/firebase";
 import { SaveUserInfo } from "./SaveUserInfo";
 import { CURRENT_AUTH_SERVER } from "../../../lib/constants";
+import { successToast, errorToast } from "../../../lib/toasties";
+
 
 type CustomContext = {
     params: Record<string, unknown>;
@@ -39,7 +41,7 @@ export default async function AuthPage(context: CustomContext) {
     const userStints = await getUserStints(userId);
 
     if (!userStints) {
-        redirect(CURRENT_AUTH_SERVER)
+        redirect(CURRENT_AUTH_SERVER);
     }
 
     let data;

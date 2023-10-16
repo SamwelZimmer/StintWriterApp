@@ -74,7 +74,7 @@ export default function StintPage(context: ContextType) {
 
             <AuthChecker />
 
-            <main className="bg-background flex flex-col h-screen items-center justify-center pt-24 pb-8 sm:pb-24 px-8 gap-8">
+            <main className="bg-background flex flex-col h-screen items-center justify-center py-24 sm:pb-24 px-8 gap-8">
 
                 <div className="w-max flex flex-col gap-4">
                     <section className="flex flex-col sm:flex-row justify-between">

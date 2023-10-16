@@ -6,3 +6,5 @@ export const PRODUCTION_AUTH_SERVER = "https://stint-writer-auth.vercel.app";
 
 export const CURRENT_AUTH_SERVER = PRODUCTION_AUTH_SERVER;
 export const CURRENT_APP_SERVER = DEVELOPMENT_APP_SERVER;
+
+export const ONE_DAY_IN_SECONDS = 86400;
