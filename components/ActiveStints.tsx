@@ -27,12 +27,14 @@ export default function ActiveStints() {
     };
 
     return (
-        <section className="rounded-md p-4 border flex flex-col bg-background shadow-md h-[300px] sm:h-[300px]">
-            <span className="font-semibold">Active Stints</span>
+        <div className="flex flex-col w-full h-full gap-2">
+        <span className="font-semibold text-gray-400">Active Stints...</span>
+
+        <section className="rounded-md p-4 border flex flex-col shadow-md h-[300px] sm:h-[300px]">
             {
                 !activeStints ?
 
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex bg-background items-center justify-center">
                     <div className="w-32 aspect-square p-4">
                         <DefaultSpinner />
                     </div>
@@ -56,6 +58,7 @@ export default function ActiveStints() {
             }
 
         </section>
+        </div>
     );
 };
 

@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast";
 import AuthChecker from "../../../../../components/AuthChecker";
 import Navbar from "../../../../../components/Navbar";
 import { getFromLocalStorage, formatDateFromTimestamp, updateLocalStorage } from "../../../../../lib/helpers";
-import { getEntry, updateSingleEntry, getNumberOfDays, getStartDate, getUserStints } from "../../../../../lib/firebase";
+import { getEntry, updateSingleEntry, getNumberOfDays, getStartDate, getUserFromId, getUserStints, updateRecentEntries } from "../../../../../lib/firebase";
 import { userIdAtom } from "../../../../../atoms/userIdAtom";
 import { ONE_DAY_IN_SECONDS } from "../../../../../lib/constants";
 import { userStintsAtom } from "../../../../../atoms/userStintsAtom";
@@ -100,6 +100,11 @@ export default function EntryPage(context: ContextType) {
 
         try {
             updateSingleEntry(userId, stintId, day, entryData);
+            updateRecentEntries(userId, stintId, day);
+
+            let updatedUserData = await getUserFromId(userId);
+            updateLocalStorage("userData", JSON.stringify(updatedUserData));
+
             
             let updatedStints = await getUserStints(userId);
             updateLocalStorage("userStints", JSON.stringify(updatedStints));
