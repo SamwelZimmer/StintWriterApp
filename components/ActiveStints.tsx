@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { AiOutlinePlus, AiOutlineArrowRight } from "react-icons/ai";
 import { BsChevronLeft, BsChevronRight, BsDot } from "react-icons/bs";
 import { useState } from "react";
+import ReactMarkdown from 'react-markdown';
 
 import { userStintsAtom } from "../atoms/userStintsAtom";
 import { useFetchUserStintsFromLocalStorage } from "../hooks/useFetchUserStintsFromLocalStorage";
@@ -13,6 +14,7 @@ import { categorizeStints, formatDateFromTimestamp, shortenString } from "../lib
 import { DefaultSpinner } from "./Loaders";
 import { Stint } from "../lib/types";
 import { ONE_DAY_IN_SECONDS } from "../lib/constants";
+import Markdown from "react-markdown";
 
 export default function ActiveStints() {
 
@@ -88,11 +90,14 @@ const Carousel = ({ activeStints }: CarouselProps) => {
 
     return (
         <div className="h-full w-full flex flex-col">
-            <Link href={`/stints/entry-tester/day-${day + 1}`} className="border hover:border-secondary rounded-md w-full h-full flex flex-col justify-between p-4 my-2">
+            <Link href={`/stints/${activeStints[activeIndex].id}/day-${day + 1}`} className="border hover:border-secondary rounded-md w-full h-full flex flex-col justify-between p-4 my-2">
 
 
-                <div className="flex flex-row w-full justify-between items-start">
-                    <span className="font-medium">{activeStints[activeIndex].title}</span>
+                <div className="flex flex-row w-full justify-between items-center">
+                    <div className="overflow-hidden flex">
+                        <span className="font-medium">{activeStints[activeIndex].title.length > 40 ? shortenString(activeStints[activeIndex].title, 35) + "..." : activeStints[activeIndex].title}</span>
+                    </div>
+
                     <span className="text-sm">Day {day + 1}/{activeStints[activeIndex].numberOfDays}</span>
                 </div>
 
@@ -107,8 +112,14 @@ const Carousel = ({ activeStints }: CarouselProps) => {
                         </div>
                     </div>
                     :
-                    <div>
-                        <p className="block lg:hidden">{shortenString(entry, 80)}...</p>
+                    <div className="w-full h-full flex flex-col gap-2 py-2 overflow-hidden">
+                        <Markdown className="hidden lg:block h-full">
+                            {shortenString(entry, 120) + "..."}
+                        </Markdown>
+
+                        <Markdown className="block lg:hidden h-full">
+                            {shortenString(entry, 80) + "..."}
+                        </Markdown>
                     </div>
                 }
 
