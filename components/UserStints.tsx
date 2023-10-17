@@ -21,7 +21,7 @@ export default function UserStints() {
     console.log(stints)
 
     return (
-        <>
+        <section className="border bg-background shadow-md rounded-md p-4">
             {
                 stints?.length == 0 ? 
                 
@@ -32,7 +32,7 @@ export default function UserStints() {
                     </div>
                 </div>
                 :
-                <div>
+                <div className="w-full">
                     {
                         stints.map((item, i) => {
                         return (
@@ -45,6 +45,6 @@ export default function UserStints() {
                     <CreateStintButton />
                 </div>
             }
-        </>
+        </section>
     );
 }

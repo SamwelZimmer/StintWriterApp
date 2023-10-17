@@ -11,14 +11,15 @@ import { Toaster } from "react-hot-toast";
 
 import AuthChecker from "../../../../../components/AuthChecker";
 import Navbar from "../../../../../components/Navbar";
-import { getFromLocalStorage, formatDateFromTimestamp } from "../../../../../lib/helpers";
-import { getEntry, updateSingleEntry, getNumberOfDays, getStartDate } from "../../../../../lib/firebase";
+import { getFromLocalStorage, formatDateFromTimestamp, updateLocalStorage } from "../../../../../lib/helpers";
+import { getEntry, updateSingleEntry, getNumberOfDays, getStartDate, getUserStints } from "../../../../../lib/firebase";
 import { userIdAtom } from "../../../../../atoms/userIdAtom";
 import { ONE_DAY_IN_SECONDS } from "../../../../../lib/constants";
 import { userStintsAtom } from "../../../../../atoms/userStintsAtom";
 import { useFetchUserDataFromLocalStorage } from "../../../../../hooks/useFetchUserDataFromLocalStorage";
 import { useFetchUserStintsFromLocalStorage } from "../../../../../hooks/useFetchUserStintsFromLocalStorage";
 import { errorToast, messageToast, successToast } from "../../../../../lib/toasties";
+import { Stint } from "../../../../../lib/types";
 
 type ContextType = {
     params: {
@@ -73,9 +74,7 @@ export default function EntryPage(context: ContextType) {
     let date = "date";
     if (stint) {
         startDate = stint?.startDate;
-        console.log(startDate)
         const currentTimestamp = startDate.seconds + ((day - 1) * ONE_DAY_IN_SECONDS);
-        console.log(currentTimestamp)
         date = formatDateFromTimestamp({ seconds: currentTimestamp, nanoseconds: 0 });
     }
 
@@ -93,8 +92,7 @@ export default function EntryPage(context: ContextType) {
         return () => clearTimeout(timerId);
     }, [showMenu]);
 
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.stopPropagation();
         e.preventDefault();
 
@@ -102,6 +100,10 @@ export default function EntryPage(context: ContextType) {
 
         try {
             updateSingleEntry(userId, stintId, day, entryData);
+            
+            let updatedStints = await getUserStints(userId);
+            updateLocalStorage("userStints", JSON.stringify(updatedStints));
+
             successToast("All good.")
         } catch (err) {
             console.log(err);

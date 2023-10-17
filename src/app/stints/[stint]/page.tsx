@@ -129,7 +129,7 @@ export default function StintPage(context: ContextType) {
                                         {currentEntries?.map((entry, i) => {
                                             let timestamp = nowInSeconds;
                                             if (stintData) {
-                                                timestamp = stintData?.startDate?.seconds + ((i - 1) * ONE_DAY_IN_SECONDS);
+                                                timestamp = stintData?.startDate?.seconds + ((i) * ONE_DAY_IN_SECONDS);
                                             }
 
                                             let bgColour = "bg-white";
