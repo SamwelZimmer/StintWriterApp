@@ -33,7 +33,7 @@ export default function RecentEntries() {
                         let stint = stints?.find(stint => stint.id === stintId);
 
                         return (
-                            <Link href={`/stints/${stintId}/day-${day}`} key={i} className="w-full h-full border rounded bg-background shadow-sm p-4 flex items-center justify-between hover:border-secondary">
+                            <Link href={`/stints/${stintId}/day-${day}`} key={i} className="w-full h-full border dark:border-gray-800 rounded bg-background dark:bg-card-dark shadow-sm p-4 flex items-center justify-between hover:border-secondary">
                                 
                                 { stint?.title && <span className="font-medium">{stint?.title.length > 40 ? shortenString(stint?.title, 35) + "..." : stint?.title}</span> }
                                 <div className="flex flex-row gap-2 items-center">

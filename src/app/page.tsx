@@ -15,7 +15,7 @@ export default async function Home() {
 
       <Navbar showBackButton={false} />
 
-      <main className="flex min-h-screen flex-col items-center py-24">
+      <main className="bg-background dark:bg-background-dark flex min-h-screen flex-col items-center py-24">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-8 sm:px-0 w-full sm:w-[500px] lg:w-[900px] h-full" >
           
@@ -29,7 +29,7 @@ export default async function Home() {
 
           <div className="row-start-3 lg:row-start-2 col-start-1 lg:col-start-2 h-full flex flex-col gap-2">
             <span className="font-semibold text-gray-400">Quick Actions...</span>
-            <div className="flex flex-row justify-between sm:justify-around items-center border p-4 bg-background shadow-md rounded-md">
+            <div className="flex flex-row justify-between sm:justify-around items-center border dark:border-gray-800 p-4 bg-background dark:bg-card-dark shadow-md rounded-md">
               <ViewStintsButton />
               <NewStintButton />
             </div>

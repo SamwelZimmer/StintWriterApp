@@ -11,9 +11,9 @@ export default function GreetingBox() {
 
     return (
         <>
-            <div className="flex flex-col gap-4 w-full">
-                <span className="text-3xl font-medium text-text">Hey {userData?.name.split(" ")[0]}</span>
-                <span className="text-xl  text-text/50">Ready to write?</span>
+            <div className="flex flex-col gap-4 w-full text-text dark:text-text-dark">
+                <span className="text-3xl font-medium ">Hey {userData?.name.split(" ")[0]}</span>
+                <span className="text-xl opacity-50">Ready to write?</span>
             </div>
 
         </>

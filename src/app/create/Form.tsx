@@ -59,13 +59,13 @@ export default function Form() {
 
     return (
         <>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-8 bg-gray-100 shadow-md h-min rounded px-8 pt-6 pb-8 w-full">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-8 bg-gray-100 dark:bg-card-dark dark:border dark:border-gray-800 shadow-md h-min rounded px-8 pt-6 pb-8 w-full">
 
             <div className="">
                 <label className="block text-gray-400 text-sm mb-2" htmlFor="username">
                     Stint Name
                 </label>
-                <input value={title} onChange={(e) => setTitle(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="e.g. Trip to Japan" />
+                <input value={title} onChange={(e) => setTitle(e.target.value)} className="bg-background dark:bg-background-dark dark:border-gray-800 dark:text-text-dark shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="e.g. Trip to Japan" />
             </div>
 
             <div className="flex flex-col gap-8 sm:flex-row justify-between w-full">
@@ -77,7 +77,7 @@ export default function Form() {
                             type="date"
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="bg-background dark:bg-background-dark dark:border-gray-800 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-text-dark leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
                 </div>
@@ -94,16 +94,14 @@ export default function Form() {
                             type="date"
                             value={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
-                            className="p-2 w-full sm:self-end shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="bg-background dark:bg-background-dark dark:border-gray-800 p-2 w-full sm:self-end shadow appearance-none border rounded py-2 px-3 text-gray-700 dark:text-text-dark leading-tight focus:outline-none focus:shadow-outline "
                         />
                     </div>
                 </div>
             </div>
 
-
-
             <div className="w-full col-start-1 col-span-3 flex items-center justify-center">
-                <motion.button type="submit" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95}} className="bg-primary hover:bg-accent shadow-md border mx-auto sm:mx-0 rounded-md px-6 py-3 w-max flex items-center gap-4 justify-between text-text hover:text-white"><AiOutlinePlus size={20} />Create </motion.button>
+                <motion.button type="submit" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95}} className="bg-primary hover:bg-accent shadow-md border dark:border-gray-600 dark:text-text-dark mx-auto sm:mx-0 rounded-md px-6 py-3 w-max flex items-center gap-4 justify-between text-text hover:text-white"><AiOutlinePlus size={20} />Create </motion.button>
             </div>
 
         </form>   

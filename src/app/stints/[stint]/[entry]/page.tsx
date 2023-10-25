@@ -122,13 +122,13 @@ export default function EntryPage(context: ContextType) {
 
             <AuthChecker />
 
-            <form onSubmit={handleSubmit} className="relative flex flex-col py-20 sm:py-24 px-8 h-screen">  
+            <form onSubmit={handleSubmit} className="relative flex flex-col py-20 sm:py-24 px-8 h-screen bg-background dark:bg-background-dark">  
 
                 <section className="flex flex-col gap-8 w-full h-full sm:w-[500px] md:w-[700px] lg:w-[800px] mx-auto z-0">
                     <div className="flex flex-row justify-between w-full items-center">
                         <h1 className="font-bold text-4xl">Day {day}</h1>
                         <div className="flex relative z-20">
-                            <button onClick={() => setShowMenu(!showMenu)} type="button" className="bg-white hover:opacity-50"><BsThreeDots size={30} /></button>
+                            <button onClick={() => setShowMenu(!showMenu)} type="button" className="hover:opacity-50"><BsThreeDots size={30} /></button>
                             <MenuBar showMarkdown={showMarkdown} setShowMarkdown={setShowMarkdown} visible={showMenu} day={Number(day)} stintId={stintId} noOfDays={noOfDays} date={date} />
                         </div>
                     </div>
@@ -136,7 +136,7 @@ export default function EntryPage(context: ContextType) {
                     { 
                         showMarkdown ? 
                         <>
-                            <span className="font-light text-orange-400 opacity-50">{"markdown visible - read only"}</span>
+                            <span className="font-light text-orange-400 opacity-50 dark:opacity-100">{"markdown visible - read only"}</span>
                             <ReactMarkdown className="markdown block w-full h-full px-0 text-base border-0 my-0 focus:ring-0 focus:outline-none resize-none" >
                                 {entryData}
                             </ReactMarkdown>                    
@@ -146,7 +146,7 @@ export default function EntryPage(context: ContextType) {
                         <textarea 
                             value={entryData ? entryData : ""} 
                             onChange={(e) => setEntryData(e.target.value)} 
-                            className="block w-full h-full px-0 text-base border-0 focus:ring-0 focus:outline-none resize-none" 
+                            className="block w-full h-full px-0 text-base border-0 focus:ring-0 focus:outline-none resize-none bg-background dark:bg-background-dark" 
                             placeholder="Write something..."                
                         />
                     }
@@ -181,18 +181,18 @@ const MenuBar = ({ day, stintId, noOfDays, visible, date, showMarkdown, setShowM
     return (
         <motion.div animate={visible ? "enter" : "exit"} variants={variants} className={`${visible ? "block": "hidden"} w-full flex flex-col absolute top-12 pb-4 right-0 sm:pb-8 z-10 `} style={{ transform: 'translateX(calc(100%))' }}>
             <div className="relative z-10">
-                <div  className={`absolute z-10 top-0 right-0 mx-auto h-min w-max border border-black/10 bg-background rounded-md flex flex-col gap-8 justify-between item-center p-4 shadow-lg text-secondary`}>
+                <div  className={`absolute z-10 top-0 right-0 mx-auto h-min w-max border border-black/10 dark:border-gray-600 bg-background dark:bg-background-dark rounded-md flex flex-col gap-8 justify-between item-center p-4 shadow-lg text-secondary`}>
 
                     <div className="flex flex-col gap-4">
-                        <button type="button" disabled={day <= 1} onClick={() => router.push(`/stints/${stintId}/day-${day - 1}`)} className="hover:opacity-50 disabled:opacity-25 flex items-center gap-4 text-sm" ><AiOutlineArrowLeft size={30} /><span className="text-gray-500">previous</span></button>
-                        <button type="button" disabled={day >= noOfDays} onClick={() => router.push(`/stints/${stintId}/day-${day + 1}`)} className="hover:opacity-50 disabled:opacity-25 flex items-center gap-4 text-sm"><AiOutlineArrowRight size={30} /><span className="text-gray-500">next</span></button>
+                        <button type="button" disabled={day <= 1} onClick={() => router.push(`/stints/${stintId}/day-${day - 1}`)} className="hover:opacity-50 disabled:opacity-25 flex items-center gap-4 text-sm" ><AiOutlineArrowLeft size={30} /><span className="text-gray-500 dark:text-gray-400">previous</span></button>
+                        <button type="button" disabled={day >= noOfDays} onClick={() => router.push(`/stints/${stintId}/day-${day + 1}`)} className="hover:opacity-50 disabled:opacity-25 flex items-center gap-4 text-sm"><AiOutlineArrowRight size={30} /><span className="text-gray-500 dark:text-gray-400">next</span></button>
                     </div>
                     
-                    <span className="flex item-center my-auto font-medium h-min w-max text-sm text-text">{date}</span>
+                    <span className="flex item-center my-auto font-medium h-min w-max text-sm text-text dark:text-text-dark">{date}</span>
 
                     <div className="flex flex-col gap-4">
-                        <button type="button" onClick={() => setShowMarkdown(!showMarkdown)} className="bg-white hover:opacity-50 flex items-center gap-4 text-sm">{ showMarkdown ? <><AiOutlineEyeInvisible size={30} /><span className="text-gray-500">view</span></> : <><AiOutlineEye size={30} /><span className="text-gray-500">view</span></>} </button>
-                        <button type="submit" className="bg-white hover:opacity-50 flex items-center gap-4 text-sm"><AiOutlineSave size={30} /><span className="text-gray-500">save</span></button>
+                        <button type="button" onClick={() => setShowMarkdown(!showMarkdown)} className="hover:opacity-50 flex items-center gap-4 text-sm">{ showMarkdown ? <><AiOutlineEyeInvisible size={30} /><span className="text-gray-500">view</span></> : <><AiOutlineEye size={30} /><span className="text-gray-500 dark:text-gray-400">view</span></>} </button>
+                        <button type="submit" className="hover:opacity-50 flex items-center gap-4 text-sm"><AiOutlineSave size={30} /><span className="text-gray-500 dark:text-gray-400">save</span></button>
                     </div>
                 </div>
             </div>

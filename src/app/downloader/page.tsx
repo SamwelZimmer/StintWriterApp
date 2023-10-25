@@ -26,7 +26,7 @@ export default function DownloaderPage() {
             <AuthChecker />
             <Navbar showBackButton />
 
-            <main className="flex h-screen flex-col items-center gap-8 py-24 px-8">
+            <main className="bg-background dark:bg-background-dark flex h-screen flex-col items-center gap-8 py-24 px-8">
                 <h1 className="text-2xl sm:text-4xl font-semibold">Download A Stint</h1>
 
                 <p className="w-full flex sm:w-[400px] text-center text-gray-400">Choose a stint and I{"'"}ll gather all the entries for you to download as a pdf.</p>

@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { AiOutlinePlus, AiOutlineArrowRight } from "react-icons/ai";
 import { BsChevronLeft, BsChevronRight, BsDot } from "react-icons/bs";
 import { useState } from "react";
-import ReactMarkdown from 'react-markdown';
 
 import { userStintsAtom } from "../atoms/userStintsAtom";
 import { useFetchUserStintsFromLocalStorage } from "../hooks/useFetchUserStintsFromLocalStorage";
@@ -30,11 +29,11 @@ export default function ActiveStints() {
         <div className="flex flex-col w-full h-full gap-2">
         <span className="font-semibold text-gray-400">Active Stints...</span>
 
-        <section className="rounded-md p-4 border flex flex-col shadow-md h-[300px] sm:h-[300px]">
+        <section className="rounded-md p-4 border dark:border-gray-800 bg-background dark:bg-card-dark flex flex-col shadow-md h-[300px] sm:h-[300px]">
             {
                 !activeStints ?
 
-                <div className="w-full h-full flex bg-background items-center justify-center">
+                <div className="w-full h-full flex bg-background dark:bg-card-dark items-center justify-center">
                     <div className="w-32 aspect-square p-4">
                         <DefaultSpinner />
                     </div>
@@ -93,7 +92,7 @@ const Carousel = ({ activeStints }: CarouselProps) => {
 
     return (
         <div className="h-full w-full flex flex-col">
-            <Link href={`/stints/${activeStints[activeIndex].id}/day-${day + 1}`} className="border hover:border-secondary rounded-md w-full h-full flex flex-col justify-between p-4 my-2">
+            <Link href={`/stints/${activeStints[activeIndex].id}/day-${day + 1}`} className="border dark:border-gray-500 dark:hover:border-secondary hover:border-secondary rounded-md w-full h-full flex flex-col justify-between p-4 my-2">
 
 
                 <div className="flex flex-row w-full justify-between items-center">
@@ -145,7 +144,7 @@ const Carousel = ({ activeStints }: CarouselProps) => {
                 <motion.button disabled={activeIndex <= 0} onClick={handleLeftClick} className="hover:opacity-50 disabled:opacity-50"><BsChevronLeft size={20} /></motion.button>
                 {
                     Array.from({ length: activeStints.length }).map((_, index) => (
-                        <motion.button onClick={() => setActiveIndex(index)} key={index} className={`${activeIndex === index ? "bg-secondary" : "bg-gray-200"} hover:bg-accent w-3 aspect-square rounded-full`} >
+                        <motion.button onClick={() => setActiveIndex(index)} key={index} className={`${activeIndex === index ? "bg-secondary" : "bg-gray-200 dark:bg-gray-700"} hover:bg-accent dark:hover:bg-accent w-3 aspect-square rounded-full`} >
                             
                         </motion.button>
                     ))

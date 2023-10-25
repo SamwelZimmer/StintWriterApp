@@ -46,9 +46,9 @@ export default function DownloadStintPage(context: ContextType) {
         heading = (
             <div className="w-full flex flex-col gap-8 pb-8">
                 <h1 className="text-5xl font-semibold">{stint.title}</h1>
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                     <div className="flex gap-1"><span className="opacity-50">Start: </span>{formatDateFromTimestamp(stint.startDate)}</div>
-                    <ReactMarkdown>
+                    <ReactMarkdown className="hidden sm:block">
                         -&gt;
                     </ReactMarkdown>
                     <div className="flex gap-1"><span className="opacity-50">End: </span>{formatDateFromTimestamp(stint.endDate)}</div>
@@ -77,7 +77,7 @@ export default function DownloadStintPage(context: ContextType) {
             <Navbar />
             <AuthChecker />
 
-            <main className="bg-background flex flex-col h-screen items-center py-24 sm:pb-24 px-8 gap-8">
+            <main className="bg-background dark:bg-background-dark flex flex-col h-screen items-center py-24 sm:pb-24 px-8 gap-8">
                 {
                     data && heading
                     ?
@@ -116,13 +116,13 @@ const HtmlToPdfConverter = ({ data, heading }: HtmlToPdfConverter) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={downloadPdf}
-            className="rounded-md border px-6 py-3 flex gap-4 items-center w-max mx-auto font-medium shadow-md bg-accent text-text hover:bg-secondary/70 hover:text-background"
+            className="rounded-md border px-6 py-3 flex gap-4 items-center w-max mx-auto font-medium shadow-md bg-accent text-text hover:bg-secondary/70 hover:text-background dark:border-gray-600 dark:text-text-dark"
         >
             <span>PDF</span>
             <RiFileDownloadLine size={20} />
         </motion.button>
 
-      <div id="contentToConvert" className="pb-4 flex flex-col h-full gap-4">
+      <div id="contentToConvert" className="pb-4 flex flex-col h-full gap-4 bg-white text-black dark:p-4 rounded-md">
         {heading}
 
         <div className="overflow-scroll h-full pb-12">

@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Providers from './Providers'
 
 import RecoilRootWrapper from './RecoilRootWrapper'
 
@@ -19,7 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <RecoilRootWrapper>{children}</RecoilRootWrapper>
+        <RecoilRootWrapper>
+          <Providers>
+            {children}
+          </Providers>
+        </RecoilRootWrapper>
       </body>
     </html>
   )

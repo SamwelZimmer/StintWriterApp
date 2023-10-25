@@ -25,14 +25,14 @@ export default function StintDisplay({ categorizedStints, Card }: TabsProps) {
     const stintCategories = [categorizedStints.active, categorizedStints.upcoming, categorizedStints.past];
   
     return (
-      <div className="w-full h-full rounded-lg overflow-hidden shadow-xl flex flex-col">
+      <div className="w-full h-full bg-background dark:bg-card-dark rounded-lg overflow-hidden shadow-xl flex flex-col">
 
-        <nav className="bg-gray-100 px-2 pt-2 border-b border-gray-200">
+        <nav className="bg-gray-100 dark:bg-gray-800 px-2 pt-2 border-b border-gray-200 dark:border-gray-800">
           <ul className="flex w-full">
             {tabs.map((item, i) => (
               <li
                 key={i}
-                className={`relative flex justify-center gap-4 items-center w-full px-4 py-2.5 cursor-pointer ${i === selectedTab ? "bg-gray-200" : "bg-white"} ${i === 0 && "rounded-tl-md"} ${i === tabs.length - 1 && "rounded-tr-md"}`}
+                className={`relative flex justify-center gap-4 items-center w-full px-4 py-2.5 cursor-pointer ${i === selectedTab ? "bg-gray-200 dark:bg-gray-900" : "bg-background dark:bg-card-dark"} ${i === 0 && "rounded-tl-md"} ${i === tabs.length - 1 && "rounded-tr-md"}`}
                 onClick={() => setSelectedTab(i)}
               > 
                 <span className="hidden sm:block text-secondary">{icons[i]}</span>

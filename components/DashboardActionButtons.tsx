@@ -24,7 +24,7 @@ export const NewStintButton = () => {
             <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="rounded-md border px-6 py-3 font-medium shadow-md bg-accent text-text hover:bg-secondary/70 hover:text-background"
+                className="rounded-md border dark:border-gray-600 px-6 py-3 font-medium shadow-md bg-accent text-text hover:bg-secondary/70 hover:text-background"
             >
                 New Stint
             </motion.button>

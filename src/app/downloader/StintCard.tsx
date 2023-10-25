@@ -14,7 +14,7 @@ export default function StintCard ({ stint }: StintCardProps) {
     return (
         <motion.div 
             onClick={() => router.push(`/downloader/${stint.id}`)} 
-            className="w-full cursor-pointer h-min p-4 border hover:border-secondary rounded-md flex flex-col gap-4 shadow-sm"
+            className="w-full cursor-pointer h-min p-4 border dark:border-gray-800 hover:border-secondary dark:hover:border-secondary rounded-md flex flex-col gap-4 shadow-sm"
         >
             <span className="font-semibold">{stint.title}</span>
             <div className="flex flex-row items-center w-full justify-start text-sm">

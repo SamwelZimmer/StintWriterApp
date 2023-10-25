@@ -74,7 +74,7 @@ export default function StintPage(context: ContextType) {
 
             <AuthChecker />
 
-            <main className="bg-background flex flex-col h-screen items-center justify-center py-24 sm:pb-24 px-8 gap-8">
+            <main className="bg-background dark:bg-background-dark flex flex-col h-screen items-center justify-center py-24 sm:pb-24 px-8 gap-8">
 
                 <div className="w-max flex flex-col gap-4">
                     <section className="flex flex-col sm:flex-row justify-between">
@@ -143,7 +143,7 @@ export default function StintPage(context: ContextType) {
                                                 <button 
                                                     key={i} 
                                                     onClick={() => router.push(`/stints/${stintId}/day-${startIndex + i + 1}`)} 
-                                                    className={`${bgColour} mx-auto hover:opacity-70 w-6 sm:w-8 aspect-square border rounded-md`} 
+                                                    className={`${bgColour} mx-auto hover:opacity-70 w-6 sm:w-8 aspect-square border rounded-md dark:border-gray-400`} 
                                                 />
                                         )})}
                                     </>
