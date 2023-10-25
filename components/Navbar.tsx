@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { RiMenu4Line, RiMenu5Line, RiDashboardLine, RiAddLine, RiCalendar2Line, RiSunFill, RiMoonFill, RiDoorOpenLine } from "react-icons/ri";
+import { RiMenu4Line, RiMenu5Line, RiDashboardLine, RiAddLine, RiCalendar2Line, RiSunFill, RiMoonFill, RiDoorOpenLine, RiFileDownloadLine } from "react-icons/ri";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import Link from "next/link";
 import { Toaster } from 'react-hot-toast';
@@ -87,6 +87,7 @@ const navItems = [
     {route: "/", Icon: RiDashboardLine, text: "Dashboard" },
     {route: "/stints", Icon: RiCalendar2Line, text: "My Stints" },
     {route: "/create", Icon: RiAddLine, text: "New Stint" },
+    {route: "/downloader", Icon: RiFileDownloadLine, text: "Download" },
 ];
 
 interface NavItemProps {

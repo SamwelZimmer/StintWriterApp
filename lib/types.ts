@@ -25,3 +25,7 @@ export type UserInfo = {
     uid: string;
     recentEntries: string[] | [];
 };
+
+export interface StintCardProps {
+    stint: Stint;
+};
